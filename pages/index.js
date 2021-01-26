@@ -3,6 +3,7 @@ import Widget from '../src/components/Widget'
 import Footer from "../src/components/Footer"
 import GitHubCorner from "../src/components/GitHubCorner"
 import QuizBackground from "../src/components/QuizBackground"
+import IndexPage from "../src/components/IndexPage"
 //TODO: 1- Colocar background
 
 import db from "../db.json"
@@ -27,37 +28,40 @@ const QuizContainer = styled.div`
 
 export default function Home() {
   return (
+    <>
+      <IndexPage />
 
-    <QuizBackground backgroundImage={db.bg}>
-      <QuizContainer>
-        <Widget>
-          <Widget.Header>
+      <QuizBackground backgroundImage={db.bg}>
 
-            <h1>Lolzinho</h1>
-          </Widget.Header>
-          <Widget.Content>
-            <p>
-              Runas
-             </p>
-          </Widget.Content>
-        </Widget>
-        <Widget>
+        <QuizContainer>
+          <Widget>
             <Widget.Header>
 
-              <h1>Hehehe</h1>
+              <h1>League of Legends</h1>
             </Widget.Header>
-          <Widget.Content>
-            <p>
-              ASDHAH
+            <Widget.Content>
+              <p>
+                Teste seus conhecimentos sobre o maravilhoso universo de League of Legends e divirta-se criando seu AluraQuiz!
+             </p>
+            </Widget.Content>
+          </Widget>
+          <Widget>
+            <Widget.Header>
+
+              <h1>Outros Quizes top</h1>
+            </Widget.Header>
+            <Widget.Content>
+              <p>
+               Se liga nesses quizes brabissimos desenvolvidos pela comunidade do Alura   
             </p>
 
-          </Widget.Content>
-        </Widget>
-        <Footer/>
-      </QuizContainer>
-      <GitHubCorner/>
-    </QuizBackground >
-
+            </Widget.Content>
+          </Widget>
+          <Footer />
+        </QuizContainer>
+        <GitHubCorner />
+      </QuizBackground >
+    </>
 
   )
 }

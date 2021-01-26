@@ -5,7 +5,7 @@ const Widget = styled.div`
   margin-top: 24px;
   margin-bottom: 24px;
   border: 1px solid black;
-  background-color: red;
+  background-color: ${({theme}) => theme.colors.mainBg};
   border-radius: ${({ theme }) => theme.borderRadius};
   overflow: hidden;
 
