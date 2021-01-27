@@ -3,12 +3,12 @@ import {useRouter} from 'next/router'
 const Quiz = () => {
 
     const router = useRouter();
-    const {pid} = router.query;
-    console.log("pid:" + pid)
+    const name = router.query.name
+   
    
     return(
         <div style={{color: 'red'}}>
-            Quiz page {pid}
+            Quiz page of {name}
         </div>
     )
 }

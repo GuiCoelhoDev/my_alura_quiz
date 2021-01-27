@@ -39,7 +39,10 @@ export default function Home() {
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log(name)
-    router.push(`/quiz?name=${name}`)
+    router.push({
+      pathname: `/quiz`,
+      query: { name: `${name}`},
+  })
 
 
 
