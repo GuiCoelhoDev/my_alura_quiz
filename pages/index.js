@@ -1,9 +1,13 @@
 import styled from 'styled-components'
 import Widget from '../src/components/Widget'
 import Footer from "../src/components/Footer"
+import Input from "../src/components/Input"
+import Button from "../src/components/Button"
 import GitHubCorner from "../src/components/GitHubCorner"
 import QuizBackground from "../src/components/QuizBackground"
 import IndexPage from "../src/components/IndexPage"
+import { useState } from 'react'
+import { useRouter } from 'next/router'
 //TODO: 1- Colocar background
 
 import db from "../db.json"
@@ -27,6 +31,19 @@ const QuizContainer = styled.div`
 `
 
 export default function Home() {
+
+  const router = useRouter();
+
+  const [name, setName] = useState('');
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log(name)
+    router.push(`/quiz?name=${name}`)
+
+
+
+  }
   return (
     <>
       <IndexPage />
@@ -43,6 +60,18 @@ export default function Home() {
               <p>
                 Teste seus conhecimentos sobre o maravilhoso universo de League of Legends e divirta-se criando seu AluraQuiz!
              </p>
+              <form style={{display: 'flex' ,flexDirection: 'column'}} onSubmit={handleSubmit}>
+
+                <Input placeholder="Put your name here" onChange={(event) => {
+                  setName(event.target.value)
+                  console.log(name)
+                }}>
+                </Input>
+                <Button disabled={name.length == 0}>
+                  Bora Jogar, {name}
+                </Button>
+             
+              </form>
             </Widget.Content>
           </Widget>
           <Widget>
@@ -52,7 +81,7 @@ export default function Home() {
             </Widget.Header>
             <Widget.Content>
               <p>
-               Se liga nesses quizes brabissimos desenvolvidos pela comunidade do Alura   
+                Se liga nesses quizes brabissimos desenvolvidos pela comunidade do Alura
             </p>
 
             </Widget.Content>
