@@ -6,29 +6,19 @@ import Button from "../src/components/Button"
 import GitHubCorner from "../src/components/GitHubCorner"
 import QuizBackground from "../src/components/QuizBackground"
 import IndexPage from "../src/components/IndexPage"
+import QuizContainer from "../src/components/QuizContainer"
 import { useState } from 'react'
 import { useRouter } from 'next/router'
 //TODO: 1- Colocar background
 
 import db from "../db.json"
 
-const BackGroundImage = styled.div`
-  background-image: url("${db.bg}");
-  flex: 1;  
-  background-size: cover;
-  background-position: center;
-`
-
-const QuizContainer = styled.div`
-  width: 100%;
-  max-width: 350px;
-  padding-top: 45px;
-  margin: auto 10%;
-  @media screen and (max-width: 500px){
-    margin: auto;
-    padding: 15px;
-  }
-`
+// const BackGroundImage = styled.div`
+//   background-image: url("${db.bg}");
+//   flex: 1;  
+//   background-size: cover;
+//   background-position: center;
+// `
 
 export default function Home() {
 
@@ -49,7 +39,7 @@ export default function Home() {
   }
   return (
     <>
-      <IndexPage />
+      
 
       <QuizBackground backgroundImage={db.bg}>
 
