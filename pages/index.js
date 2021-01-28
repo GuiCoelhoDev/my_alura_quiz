@@ -59,7 +59,7 @@ export default function Home() {
                   setName(event.target.value)
                   console.log(name)
                 }}>
-                </Input>
+                </Input>  
                 <Button disabled={name.length == 0}>
                   Bora Jogar, {name}
                 </Button>
