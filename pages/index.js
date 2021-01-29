@@ -28,7 +28,6 @@ export default function Home() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(name)
     router.push({
       pathname: `/quiz`,
       query: { name: `${name}`},
@@ -57,10 +56,10 @@ export default function Home() {
 
                 <Input placeholder="Put your name here" onChange={(event) => {
                   setName(event.target.value)
-                  console.log(name)
+                  
                 }}>
                 </Input>  
-                <Button disabled={name.length == 0}>
+                <Button type="submit" disabled={name.length == 0} height="8vh" width="100%">
                   Bora Jogar, {name}
                 </Button>
              
