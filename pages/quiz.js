@@ -19,21 +19,47 @@ const Quiz = () => {
     const name = router.query.name
 
     useEffect(() => {
+        //Fetch()
+        //Iteração que acontece dps que o componente nasceu
         setTimeout(() => setMoment(moments.quiz), 1000)
 
     }, []);
 
+    const handleSubmitQuiz = (event) => {
+        event.preventDefault()
+        const nextQuestion = questionsIndex + 1;
+        // if (questionsIndex == totalQuestions - 1) {
+        //   setMoment(moments.result)
+    
+    
+        // } else {
+        //   setQuestionsIndex(questionsIndex + 1)
+    
+        // }
 
-
-
+        if(nextQuestion < totalQuestions) {
+            setQuestionsIndex(questionsIndex + 1);
+        }else {
+            setMoment(moments.result)
+        }
+      }
 
     return (
         <QuizBackground backgroundImage={db.bg}>
+            
+         
             <QuizContainer>
+                {/* TODO: Calcular quantas questões foram acertadas */}
+                {/* TODO: Como o jogo acaba? Mostrar resultado no final do quiz das questões acertadas */}
+                {/* TODO: Trazer questões minhas de lol */}
+                {/* TODO: Fazer as alternativas funcionarem (certo ou errado) (useState ou alert)*/}
 
+                {/* Mario: Verificação da questão (alert ou useState pra mostrar resposta?) */}
+                {/* Ju: Como funciona o mecanismo do jogo? */}
+                {/* Paulo: Trazer questões que toquem vocês */}
                 {moment == moments.quiz &&
 
-                    <QuestionWidget setMoment={setMoment} setQuestionsIndex={setQuestionsIndex} totalQuestions={totalQuestions} questionsIndex={questionsIndex} question={question} name={name} />
+                    <QuestionWidget onSubmit={handleSubmitQuiz} totalQuestions={totalQuestions} questionsIndex={questionsIndex} question={question} name={name} />
                 }
                 {moment == moments.loading && <LoadingWidget />}
                 {moment == moments.result && <ResultWidget />}

@@ -5,15 +5,23 @@ import Button from "../Button"
 import Title from "../Title"
 import Text from "../Text"
 
-const QuestionWidget = ({ name, question, questionsIndex, totalQuestions, setQuestionsIndex, setMoment }) => {
-  const moments = { loading: 'loading', quiz: 'quiz', result: 'result' }
+const QuestionWidget = ({ onSubmit, name, question, questionsIndex, totalQuestions}) => {
+
+  const moments = {
+    loading: 'loading',
+    quiz: 'quiz',
+    result: 'result'
+  }
+
+
+
 
   return (
     <div>
 
 
       <Widget>
-        <Widget.Header style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between'}}>
+        <Widget.Header style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
           <Title>
             Perguta {questionsIndex} de {totalQuestions}
           </Title>
@@ -34,37 +42,34 @@ const QuestionWidget = ({ name, question, questionsIndex, totalQuestions, setQue
 
         <Widget.Content>
           {/* Alternativas */}
-          {question.alternatives.map((alternativa =>
+          <form onSubmit={onSubmit}>
+            {question.alternatives.map((alternativa, index) => {
+
+              const alternativeID = `alternative__${index}`;
+              console.log('alternativeID', alternativeID)
+              return (
 
 
-            <div>
-              <Button width="100%" height="8vh">
+                <Widget.Topic >
 
-                <input type="radio" id="male" name="gender" value={'male'} />
+                  <input type="radio" id={alternativeID} name="alternative" value={'alternative'} />
+
+                  <label htmlFor={alternativeID}>{alternativa}</label>
+                </Widget.Topic>
 
 
-                <label for="male">{alternativa}</label>
-              </Button>
+              )
+            })}
+            {/* Confirmar Alternativa */}
+            <Button type="submit" width="100%" height="8vh">Confirmar</Button>
 
-            </div>
-          ))}
+
+          </form>
+
+
         </Widget.Content>
 
-        <Widget.Content>
-          {/* Confirmar Alternativa */}
-          <Button onClick={() => {
 
-
-            if (questionsIndex == totalQuestions - 1) {
-              setMoment(moments.result)
-
-
-            } else {
-              setQuestionsIndex(questionsIndex + 1)
-
-            }
-          }} width="100%" height="8vh">Confirmar</Button>
-        </Widget.Content>
       </Widget>
     </div>
   );
